@@ -1,0 +1,174 @@
+@font-face {
+  font-family: gamegirl;
+  src: url(./gamegirl.ttf);
+}
+
+body {
+  background-color: black;
+  color: #8bac0f;
+  font-family: gamegirl;
+}
+
+.container {
+  text-align: center;
+}
+
+.gameboy {
+  position: relative;
+  background-color: #c0bcb8;
+  padding: 25px 20px;
+  width: max-content;
+  border-radius: 3% 3% 50px;
+  margin: auto;
+}
+
+.gameboy,
+.explanation {
+  display: inline-block;
+  text-align: left;
+  vertical-align: top;
+}
+
+.screen {
+  position: relative;
+  padding: 17px 35px;
+  border: 1px solid black;
+  border-radius: 3% 3% 15%;
+  background-color: #575463;
+}
+
+.screen::before {
+  content: ' ';
+  position: absolute;
+  top: 45px;
+  left: 11px;
+  border: 3px solid #c11313;
+  border-radius: 100%;
+}
+
+#snake {
+  display: block;
+  border: 1px solid #3e3e3e;
+  margin: auto;
+  border-radius: 2%;
+  width: 130px;
+}
+
+.body {
+  height: 120px;
+}
+
+.controls {
+  margin-top: 40px;
+  height: 70px;
+  position: relative;
+}
+
+.controls-left,
+.controls-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 70px;
+}
+
+.controls-left {
+  left: 0;
+}
+
+.controls-right {
+  right: 0;
+  top: 35%;
+  transform: rotate(-25deg);
+}
+
+.controls-left::before,
+.controls-left::after {
+  content: ' ';
+  background-color: #38373d;
+  width: 55px;
+  border-radius: 2px;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 25%;
+  display: block;
+  position: absolute;
+  transform: translateY(-50%);
+}
+
+.controls-left::after {
+  transform: translateY(-50%) rotateZ(90deg);
+}
+
+.controls-right::before,
+.controls-right::after {
+  content: ' ';
+  position: absolute;
+  display: block;
+  border-radius: 100%;
+  border: 14px solid #8f0052;
+}
+
+.controls-right::before {
+  left: 2px;
+}
+
+.controls-right::after {
+  right: 0px;
+}
+
+.menu-buttons {
+  position: relative;
+  width: 52px;
+  margin: 10px auto 0;
+}
+
+.menu-buttons::before,
+.menu-buttons::after {
+  content: ' ';
+  position: absolute;
+  width: 23px;
+  height: 5px;
+  background-color: #7e727d;
+  border-radius: 5px;
+  border: 1px solid #71686c;
+  transform: rotate(-30deg);
+}
+
+.menu-buttons::before {
+  left: 0;
+}
+
+.menu-buttons::after {
+  right: 0;
+}
+
+.holes {
+  position: absolute;
+  transform: rotate(60deg);
+  bottom: 5px;
+  right: 20px;
+}
+
+.holes-item {
+  width: 35px;
+  background-color: #8b828b;
+  border: 2px solid #a69e92;
+  height: 1px;
+  border-radius: 5px;
+  margin-top: 7px;
+}
+
+.explanation {
+  padding-left: 10px;
+  width: 400px;
+  font-size: 0.8rem;
+}
+
+.links {
+  padding: 2em;
+  position: absolute;
+  top: 0;
+  right: 0;
+}

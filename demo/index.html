@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Snake HTML5</title>
+    <script type="text/javascript" src="../dist/index.js"></script>
+    <link rel="stylesheet" href="./style.css">
+	</head>
+	<body>
+    <aside class="links">
+      <a href="https://github.com/pellul/snake" target="_blank" rel="noopener noreferrer">See on Github</a>
+    </aside>
+    <section class="container">
+      <article>
+        <h1>The Snake</h1>
+        <p>Press an arrow key to start the game!</p>
+        <div class="gameboy">
+          <div class="screen">
+            <canvas id="snake"></canvas>
+          </div>
+          <div class="body">
+            <div class="controls">
+              <div class="controls-left"></div>
+              <div class="controls-right"></div>
+            </div>
+            <div class="menu-buttons"></div>
+          </div>
+          <div class="holes">
+            <div class="holes-item"></div>
+            <div class="holes-item"></div>
+            <div class="holes-item"></div>
+            <div class="holes-item"></div>
+            <div class="holes-item"></div>
+            <div class="holes-item"></div>
+          </div>
+        </div>
+        <aside class="explanation">
+          <ol type="I">
+            <li>The Rules
+              <ol type="I">
+                <li>
+                  <p>
+                    Eat the baits by running into them, each bait eaten increase
+                    your snake size.
+                  </p>
+                </li>
+                <li>
+                    <p>
+                      The bigger your snake is, the faster he goes.
+                    </p>
+                  </li>
+                <li>
+                  <p>
+                    Reaching one screen edge will teleport you to the other side
+                    of the screen.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    If you eat your own tail: <u>GAME OVER</u>.
+                  </p>
+                </li>
+              </ol>
+            </li>
+            <li>Controls
+              <p>
+                Use your keyboard's arrow keys to move your snake in any
+                direction.
+              </p>
+            </li>
+          </ol>
+        </aside>
+      </article>
+    </section>
+  </body>
+  <script>
+    window.onload = () => new Game(16, 16, document.getElementById('snake'));
+  </script>
+</html>
