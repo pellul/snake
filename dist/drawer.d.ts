@@ -1,4 +1,4 @@
-import { PositionI, ElementI } from './interfaces';
+import { ElementI } from './interfaces';
 export declare class Drawer {
     readonly width: number;
     readonly height: number;
@@ -6,7 +6,6 @@ export declare class Drawer {
     UNIT_SIZE: number;
     BACKGROUND_COLOR: string;
     constructor(width: number, height: number, canvas: HTMLCanvasElement);
-    getRandomPosition(...occupied: PositionI[]): PositionI;
     draw(...elements: ElementI[]): void;
     drawElement: (element: ElementI) => void;
     clear(): void;

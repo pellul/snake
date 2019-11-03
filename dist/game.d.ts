@@ -12,6 +12,7 @@ export declare class Game {
     private handleBoundaries;
     private handleBaits;
     private generateBait;
+    private getRandomPosition;
     private handleSuicide;
     private render;
     init: () => void;

@@ -1,5 +1,5 @@
-import { PositionI } from './position';
 import { ElementI } from './element';
+import { PositionI } from './position';
 export declare abstract class Movable implements ElementI {
     position: PositionI;
     color: string;
@@ -11,4 +11,5 @@ export declare abstract class Movable implements ElementI {
     moveRight(): void;
     moveTop(): void;
     moveBy(vector?: PositionI): void;
+    private isGoingBackward;
 }

@@ -1,4 +1,4 @@
-import { PositionI, ElementI } from './interfaces';
+import { ElementI } from './interfaces';
 
 export class Drawer {
   public UNIT_SIZE = 8;
@@ -8,28 +8,10 @@ export class Drawer {
     public readonly width: number,
     public readonly height: number,
     public readonly canvas: HTMLCanvasElement,
-  )
-  {
+  ) {
     this.canvas.width = this.width * this.UNIT_SIZE;
     this.canvas.height = this.height * this.UNIT_SIZE;
   }
-
-  public getRandomPosition(...occupied: PositionI[]): PositionI {
-    const random = () => {
-      return {
-        X: (Math.floor((Math.random() * this.width))),
-        Y: (Math.floor((Math.random() * this.height))),
-      };
-    };
-
-    const exists = pos => occupied.some(item => item.X === pos.X && item.Y === pos.Y)
-
-    let position = random();
-    while(exists(position)) {
-      position = random();
-    }
-    return position;
-}
 
   public draw(...elements: ElementI[]) {
     this.clear();

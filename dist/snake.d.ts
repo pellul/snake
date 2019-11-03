@@ -1,12 +1,13 @@
-import { PositionI, Movable } from './interfaces';
 import { Bait } from './bait';
+import { PositionI, Movable } from './interfaces';
 export declare class Snake extends Movable {
     color: string;
     parent: Snake;
     child: Snake;
-    newBorn: boolean;
     constructor(position: PositionI, color?: string, parent?: Snake);
     eat(bait: Bait): void;
-    onMove: () => void;
+    onMove: () => any;
     getPositions(): PositionI[];
+    getPreviousPosition(): PositionI;
+    getTailEnd(): Snake;
 }

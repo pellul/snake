@@ -13,10 +13,10 @@ export class Controller {
     return this;
   }
 
+  // If the input is bound to a function, then save the input
   public handleInput(e: KeyboardEvent) {
-    this.lastInput = this.keyMap.get(e.keyCode);
-    if (this.lastInput) {
-      this.lastInput = this.lastInput.bind(this.player);
+    if (this.keyMap.get(e.keyCode)) {
+      this.lastInput = this.keyMap.get(e.keyCode).bind(this.player);
     }
   }
 

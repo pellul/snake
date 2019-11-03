@@ -1,7 +1,8 @@
-import { Drawer } from './drawer';
-import { Snake } from './snake';
-import { Controller } from './controller';
 import { Bait } from './bait';
+import { Controller } from './controller';
+import { Drawer } from './drawer';
+import { PositionI } from './interfaces';
+import { Snake } from './snake';
 
 export class Game {
   private readonly drawer: Drawer;
@@ -13,8 +14,8 @@ export class Game {
 
   public constructor(width: number, height: number, canvas: HTMLCanvasElement) {
     this.drawer = new Drawer(width, height, canvas);
-    this.snake = new Snake(this.drawer.getRandomPosition());
-    this.bait = new Bait(this.drawer.getRandomPosition());
+    this.snake = new Snake(this.getRandomPosition());
+    this.bait = new Bait(this.getRandomPosition());
     this.controller = new Controller(this.snake)
       .bind(this.snake.moveBottom, 38)
       .bind(this.snake.moveLeft, 37)
@@ -26,18 +27,17 @@ export class Game {
   }
 
   private handleInput() {
-    this.controller.applyLastInput();
+    this.controller.lastInput();
   }
 
   private update() {
+    this.handleSuicide();
     this.handleBoundaries(this.snake);
     this.handleBaits();
-    this.handleSuicide();
   }
 
   private gameFinished() {
     if (this.snake.getPositions().length >= (this.drawer.width * this.drawer.height)) {
-      console.log('H4rD K0r3')
       return this.gameIsOver = true;
     }
   }
@@ -72,7 +72,24 @@ export class Game {
   }
 
   private generateBait(): Bait {
-    return new Bait(this.drawer.getRandomPosition(...this.snake.getPositions()));
+    return new Bait(this.getRandomPosition(...this.snake.getPositions()));
+  }
+
+  private getRandomPosition(...occupied: PositionI[]): PositionI {
+    const random = () => {
+      return {
+        X: (Math.floor((Math.random() * this.drawer.width))),
+        Y: (Math.floor((Math.random() * this.drawer.height))),
+      };
+    };
+
+    const exists = pos => occupied.some(item => item.X === pos.X && item.Y === pos.Y)
+
+    let position = random();
+    while(exists(position)) {
+      position = random();
+    }
+    return position;
   }
 
   private handleSuicide() {
